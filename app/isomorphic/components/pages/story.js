@@ -4,6 +4,7 @@ import React from "react";
 import { InfiniteStoryBase, WithPreview } from "@quintype/components";
 import { BlankStory } from "../story-templates/blank";
 import { number, object, shape, any } from "prop-types";
+import { PoliticsPage } from "./politics";
 
 function StoryPageBase({ index, story, otherProp }) {
   // Can switch to a different template based story-template, or only show a spoiler if index > 0
@@ -32,6 +33,9 @@ function storyPageLoadItems(pageNumber) {
 
 export function StoryPage(props) {
   return (
+    props.data.story.subheadline === 'Politics POC'?
+    <PoliticsPage props={props.data.story}/>
+    :
     <InfiniteStoryBase
       {...props}
       render={StoryPageBase}

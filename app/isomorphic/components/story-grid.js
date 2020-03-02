@@ -4,6 +4,7 @@ import PT from "prop-types";
 import "./story-grid.m.css";
 
 function StoryGridStoryItem(props) {
+  console.log('responsive', props);
   return (
     <Link href={`${props.story.url}`} className="story-grid-item">
       <figure className="qt-image-16x9" styleName="story-grid-item-image">

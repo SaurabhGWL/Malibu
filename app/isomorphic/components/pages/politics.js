@@ -1,60 +1,88 @@
 import React from "react";
 import "./politics.m.css";
-import img from "./icons/donald.jpg";
-export function PoliticsPage() {
+import { ResponsiveImage } from "@quintype/components";
+
+
+export function PoliticsPage(props) {
   return (
     <div>
        <div styleName="root">
         <div styleName="gridContainer">
-           <div styleName="grid1">
-             <img src="./icons/donald.jpg" alt="news"/>
-             <div styleName="ImgText" style={{bottom:"33%"}}>
+           <div styleName="grid1 " className="qt-image-16x9">
+              <ResponsiveImage
+                slug={props.props["hero-image-s3-key"]}
+                metadata={props.props["hero-image-metadata"]}
+                aspectRatio={[16, 9]}
+                defaultWidth={480}
+                widths={[250, 480, 640]}
+                sizes="( max-width: 500px ) 98vw, ( max-width: 768px ) 48vw, 23vw"
+                imgParams={{ auto: ["format", "compress"] }}
+              />
+             <div styleName="ImgText" >
               <div styleName="headlineText">
-                Lin-Manuel Miranda says Donald Trump is spreading 'a virulent strain of a virus'
+                {props.props["hero-image-caption"]}
                 </div>
-                <p styleName="authorText">Jonnathan Doe</p>
+                <p styleName="authorText">{props.props["hero-image-attribution"]}</p>
               </div>
            </div>
                <div styleName="grid20">
-                 <img src='./icons/content.png'  alt="launch"/>
-                 <div styleName="headline">
-                   Jenny Lawson is publishing a new book and It's Sort of a Colouring Book
-                 </div>
-                 <p styleName="author">Jonnathan Doe</p>
+                 <div className="qt-image-16x9">
+                  <ResponsiveImage
+                    slug={props.props.cards[0].metadata["social-share"].image.key}
+                    metadata={props.props.cards[0].metadata["social-share"].image.metadata}
+                    aspectRatio={[16, 9]}
+                    defaultWidth={480}
+                    widths={[250, 480, 640]}
+                    sizes="( max-width: 500px ) 98vw, ( max-width: 768px ) 48vw, 23vw"
+                    imgParams={{ auto: ["format", "compress"] }}
+                  />
+                  </div>
+                 
+                  <div styleName="headline">
+                    {props.props.cards[0]["story-elements"][0].title}
+                  </div>
+                 
+                 <p styleName="author">{props.props.cards[0]["story-elements"][0]["image-attribution"]}</p>
                 </div>
                <div styleName="grid21">
                  <div styleName="headline">
-                   Airtel Offers 3 GB Free Data A Month To Customers Who Switch To Its 4G Service  
+                   {props.props.cards[1]["story-elements"][0].title} 
                  </div>
-                 <p styleName="author">Alice Doe</p>
+                  <p styleName="author">
+                    {props.props.cards[1]["story-elements"][0]["image-attribution"]} 
+                  </p>
                </div> 
                 <div styleName="grid31">
                   <div styleName="headline1">
-                    Airtel Offers 3 GB Free Data A Month To Customers Who Switch To Its 4G 
-                    Service
+                  {props.props.cards[2]["story-elements"][0].title} 
                   </div>
-                  <p styleName="author1">Alex Parkinson</p>
+                  <p styleName="author1">
+                  {props.props.cards[2]["story-elements"][0]["image-attribution"]} 
+                  </p>
                 </div>
                 <div styleName="grid32">
                   <div styleName="headline1">
-                    Warning Letter For Ankleshwar Plant Sends Wockhardt Shares To Near 2.5-
-                    Year Low  
+                    {props.props.cards[3]["story-elements"][0].title} 
                   </div>
-                  <p styleName="author1">Alice Doe</p>
+                  <p styleName="author1">
+                    {props.props.cards[3]["story-elements"][0]["image-attribution"]}
+                  </p>
                 </div>
                 <div styleName="grid33">
                   <div styleName="headline1">
-                    Sundar Pichai Launches 'Digital
-                    Unlocked' Programme 
+                  {props.props.cards[4]["story-elements"][0].title} 
                   </div>
-                  <p styleName="author1">Jonnathan Doe</p>
+                  <p styleName="author1">
+                    {props.props.cards[4]["story-elements"][0]["image-attribution"]}
+                  </p>
                 </div>
                 <div styleName="grid34">
                   <div styleName="headline1">
-                    Warning Letter For Ankleshwar Plant Sends Wockhardt Shares To Near 2.5-
-                    Year Low
+                    {props.props.cards[5]["story-elements"][0].title}
                   </div>
-                  <p styleName="author1">Alice Doe</p>
+                  <p styleName="author1">
+                    {props.props.cards[5]["story-elements"][0]["image-attribution"]}
+                  </p>
                 </div>
         </div>
       </div>
@@ -63,3 +91,4 @@ export function PoliticsPage() {
     </div>
   );
 }
+
