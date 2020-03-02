@@ -5,6 +5,7 @@ import { loadHomePageData } from "./data-loaders/home-page-data";
 import { loadStoryPageData, loadStoryPublicPreviewPageData } from "./data-loaders/story-page-data";
 import { loadSectionPageData } from "./data-loaders/section-page-data";
 import { loadTagPageData } from "./data-loaders/tag-page-data";
+import { loadAuthorPageData } from "./data-loaders/author-page-data";
 import { loadSearchPageData } from "./data-loaders/search-page-data";
 import { catalogDataLoader } from "@quintype/framework/server/data-loader-helpers";
 import { getNavigationMenuArray } from "./data-loaders/menu-data";
@@ -46,6 +47,8 @@ export function loadData(pageType, params, config, client, { host, next, domainS
         return Promise.resolve({ cacheKeys: ["static"] });
       case PAGE_TYPE.SEARCH_PAGE:
         return loadSearchPageData(client, params.q, config);
+      case PAGE_TYPE.AUTHOR_PAGE:
+        return loadAuthorPageData(client, params.authorId, config);
       default:
         return Promise.resolve({ error: { message: "No Loader" } });
     }
